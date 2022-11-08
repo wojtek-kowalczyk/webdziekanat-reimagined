@@ -4,32 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
+  BrowserRouter as Router
 } from "react-router-dom";
-import Root from "./routes/root";
-import ErrorPage from './routes/error-page';
-import Contact from './routes/test';
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "contacts/:contactId",
-        element: <Contact />,
-      },
-    ],
-  },
-  {
-    path: "contacts/:contactId",
-    element: <Contact />,
-  },
-]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -37,7 +13,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Router>
+      <App/>
+    </Router>
   </React.StrictMode>
 );
 
