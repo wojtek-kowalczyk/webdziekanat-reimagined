@@ -11,13 +11,11 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import "./signin.css"
 
 function Copyright(props: any) {
     return (
         <>
-            <p className='test123'>DZIEN DOBRY TEST</p>
+            <p>DZIEN DOBRY TEST</p>
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
                 {'Copyright © '}
                 <Link color="inherit" href="https://mui.com/">
@@ -30,7 +28,6 @@ function Copyright(props: any) {
     );
 }
 
-const theme = createTheme();
 
 export default function SignIn() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,7 +40,7 @@ export default function SignIn() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -95,13 +92,13 @@ export default function SignIn() {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
+                                <Link href="#" sx={{color: 'secondary.dark'}} variant="body2">
                                     Forgot password?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                <Link href="#" sx={{color: 'secondary.dark'}} variant="body2">
+                                    {"Don't have an account?"}
                                 </Link>
                             </Grid>
                         </Grid>
@@ -109,6 +106,6 @@ export default function SignIn() {
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
-        </ThemeProvider>
+        </>
     );
 }
