@@ -13,6 +13,11 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import { ListItemIcon, ListItemText } from "@mui/material";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -81,6 +86,15 @@ export interface ProfileSnippetProps {
 
 const ProfileSnippet = (props: ProfileSnippetProps) => {
   const { username, loggedIn } = props;
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box
       sx={{
@@ -93,9 +107,44 @@ const ProfileSnippet = (props: ProfileSnippetProps) => {
       {loggedIn ? (
         <>
           <Typography sx={{ mr: 1 }}>{username}</Typography>
-          <IconButton size="large" edge="start" color="inherit">
-            <PersonIcon />
-          </IconButton>
+
+          <div>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              onClick={handleClick}
+            >
+              <PersonIcon />
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <MenuItem onClick={handleClose} component={Link} to="/personal">
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="Personal Info" />
+              </MenuItem>
+              <MenuItem onClick={handleClose} component={Link} to="/settings">
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Settings" />
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  alert("TODO: Sign Out");
+                  handleClose();
+                }}
+                component={Link}
+                to="/"
+              >
+                <ListItemIcon>
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText primary="LogOut" />
+              </MenuItem>
+            </Menu>
+          </div>
         </>
       ) : (
         <Button variant="contained" onClick={() => props.openSignInDialog()}>
