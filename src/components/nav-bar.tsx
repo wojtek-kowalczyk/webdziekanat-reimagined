@@ -17,6 +17,7 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
 
 export default function SideNav() {
   const [open, setOpen] = React.useState(true);
@@ -27,39 +28,47 @@ export default function SideNav() {
 
   return (
     <List
-      sx={{ width: "20%", maxWidth: 300, minWidth: 225, display: "flex", flexDirection: "column", backgroundColor: "background.paper"}}
+      sx={{
+        width: "20%",
+        maxWidth: 300,
+        minWidth: 225,
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "background.paper",
+        fontFamily: "Titillium Web, sans-serif",
+      }}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
-      <ListItemButton component={Link} to="/" sx={{flex: 0}}>
+      <ListItemButton component={Link} to="/" sx={{ flex: 0 }}>
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItemButton>
 
-      <ListItemButton component={Link} to="/schedule" sx={{flex: 0}}>
+      <ListItemButton component={Link} to="/schedule" sx={{ flex: 0 }}>
         <ListItemIcon>
           <CalendarMonthIcon />
         </ListItemIcon>
         <ListItemText primary="Course Shedule" />
       </ListItemButton>
 
-      <ListItemButton component={Link} to="/reportcard" sx={{flex: 0}}>
+      <ListItemButton component={Link} to="/reportcard" sx={{ flex: 0 }}>
         <ListItemIcon>
           <LibraryBooksIcon />
         </ListItemIcon>
         <ListItemText primary="Report Card" />
       </ListItemButton>
 
-      <ListItemButton component={Link} to="/personal" sx={{flex: 0}}>
+      <ListItemButton component={Link} to="/personal" sx={{ flex: 0 }}>
         <ListItemIcon>
           <PersonIcon />
         </ListItemIcon>
         <ListItemText primary="Personal Info" />
       </ListItemButton>
 
-      <ListItemButton component={Link} to="/administration" sx={{flex: 0}}>
+      <ListItemButton component={Link} to="/administration" sx={{ flex: 0 }}>
         <ListItemIcon>
           <HomeWorkIcon />
         </ListItemIcon>
@@ -67,9 +76,9 @@ export default function SideNav() {
       </ListItemButton>
 
       {/* Expander */}
-      <Box sx={{flex: "1" }} />
+      <Box sx={{ flex: "1" }} />
 
-      <ListItemButton component={Link} to="/settings" sx={{flex: 0}}>
+      <ListItemButton component={Link} to="/settings" sx={{ flex: 0 }}>
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
@@ -80,7 +89,7 @@ export default function SideNav() {
         component={Link}
         to="/"
         onClick={() => alert("todo : logout")}
-        sx={{flex: 0}}
+        sx={{ flex: 0 }}
       >
         <ListItemIcon>
           <LogoutIcon />

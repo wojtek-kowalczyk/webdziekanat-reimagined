@@ -19,7 +19,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { getDesignTokens } from "./theme";
 import SimpleDialogDemo from "./components/signin-dialog";
 import SignInDialog from "./components/signin-dialog";
-import SearchAppBar from "./components/app-bar";
+import CustomAppBar from "./components/app-bar";
 import SideNav from "./components/nav-bar";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
@@ -41,7 +41,7 @@ function App() {
     setSignInDialogOpen(true);
   };
 
-  const handleClose = (value: boolean) => {
+  const handleClose = () => {
     setSignInDialogOpen(false);
   };
 
@@ -50,6 +50,7 @@ function App() {
     _username: string | undefined,
     password: string | undefined
   ) => {
+    handleClose();
     setGlobalProps({
       loggedIn: accepted,
       username: _username ? _username : "",
@@ -71,36 +72,25 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
-        {/* <Button variant="contained" onClick={() => setSignInDialogOpen(true)}>
-          Sign In
-        </Button>
         <SignInDialog
           open={signInDialogOpen}
           onClose={handleClose}
           submitForm={logIn}
-        /> */}
-
-        <SearchAppBar />
-
+        />
+        <CustomAppBar
+          colorMode={colorMode}
+          theme={theme}
+          loggedIn={globalProps.loggedIn}
+          openSignInDialog={handleClickOpen}
+          username={globalProps.username}
+        />
         <div className="viewport">
-
           <SideNav />
-
-          <Box >
+          <Box>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
-
-            <p>default content</p>
-            <IconButton onClick={colorMode.toggleColorMode} color="inherit">
-              {theme.palette.mode === "dark" ? (
-                <Brightness7Icon />
-              ) : (
-                <Brightness4Icon />
-              )}
-            </IconButton>
           </Box>
         </div>
       </ThemeProvider>

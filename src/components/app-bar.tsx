@@ -8,6 +8,11 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import PersonIcon from "@mui/icons-material/Person";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -43,15 +48,71 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "16ch",
       "&:focus": {
-        width: "20ch",
+        width: "24ch",
       },
     },
   },
 }));
 
-export default function SearchAppBar() {
+export interface DarkModeSwitchProps {
+  colorMode: any;
+  theme: any;
+}
+
+const DarkModeSwitch = (props: DarkModeSwitchProps) => {
+  return (
+    <IconButton onClick={props.colorMode.toggleColorMode} color="inherit">
+      {props.theme.palette.mode === "dark" ? (
+        <DarkModeIcon />
+      ) : (
+        <LightModeIcon />
+      )}
+    </IconButton>
+  );
+};
+
+export interface ProfileSnippetProps {
+  loggedIn: boolean;
+  username: string;
+  openSignInDialog: () => void;
+}
+
+const ProfileSnippet = (props: ProfileSnippetProps) => {
+  const { username, loggedIn } = props;
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        ml: 4,
+        alignItems: "center",
+      }}
+    >
+      {loggedIn ? (
+        <>
+          <Typography sx={{ mr: 1 }}>{username}</Typography>
+          <IconButton size="large" edge="start" color="inherit">
+            <PersonIcon />
+          </IconButton>
+        </>
+      ) : (
+        <Button variant="contained" onClick={() => props.openSignInDialog()}>
+          Sign In
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+export default function CustomAppBar(
+  props: DarkModeSwitchProps & {
+    loggedIn: boolean;
+    openSignInDialog: () => void;
+    username: string;
+  }
+) {
   return (
     <Box sx={{ flexGrow: 1, zIndex: 10, position: "relative" }}>
       <AppBar enableColorOnDark position="static">
@@ -60,19 +121,33 @@ export default function SearchAppBar() {
             size="large"
             edge="start"
             color="inherit"
-            aria-label="open drawer"
+            disableRipple
             sx={{ mr: 2 }}
+            component={Link}
+            to="/"
           >
-            <MenuIcon />
+            <img
+              src="logo.png"
+              alt="logo politechnika lodzka"
+              style={{ height: 40 }}
+            />
           </IconButton>
+
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              fontFamily: "Titillium Web, sans-serif",
+            }}
           >
-            MUI
+            WebDziekanat Reimagined
           </Typography>
+
+          <DarkModeSwitch colorMode={props.colorMode} theme={props.theme} />
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -82,6 +157,12 @@ export default function SearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+
+          <ProfileSnippet
+            username={props.username}
+            loggedIn={props.loggedIn}
+            openSignInDialog={props.openSignInDialog}
+          />
         </Toolbar>
       </AppBar>
     </Box>
