@@ -1,0 +1,31 @@
+Bulletin board - empty, to my liking
+Course schedule - empty, tml
+personal data - form
+    including: bank acc no -> merge to one page
+    maybe, accordeon menu.
+    Put your summary: pic, name, id, field of study, etc. fos most importantly
+report card - most important part of webdziekanat
+Additional and elective courses selection and summary - moderate
+Fees - due and history, including tuition fee
+Scholarships, generaly money stuff
+medical exam expiration date -> prefereably as part of personal summary
+Link to Podania i wnioski, maybe summary of placed ones. (w tym podanie o zakwaterowanie)
+zapisy na examin i wf
+external links:
+- podania o dom studencki
+- mLegitymacja
+- podania in general
+- ects course catalogue
+- samorząd studencki
+meetings and manadatory terms.
+
+The whole thing makes no sense, so I propose to keep:
+Bulletin - News.
+Course schedule 
+Personal data - view and edit, also snippet summary
+report card - most important part
+administrative - fees, paymants, scholarships, electives
+external - links to given things
+
+perhaps side menu with subchapters, each subchapter could be a tab.
+
