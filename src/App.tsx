@@ -6,6 +6,7 @@ import SignIn from "./components/signin";
 import Home from "./components/home";
 import PageNotFound from "./components/page-not-found";
 import {
+  Box,
   createTheme,
   CssBaseline,
   IconButton,
@@ -18,6 +19,8 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { getDesignTokens } from "./theme";
 import SimpleDialogDemo from "./components/signin-dialog";
 import SignInDialog from "./components/signin-dialog";
+import SearchAppBar from "./components/app-bar";
+import SideNav from "./components/nav-bar";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -28,20 +31,18 @@ export interface GlobalProps {
 
 function App() {
   const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const [signInDialogOpen, setSignInDialogOpen] = React.useState(false);
   const [globalProps, setGlobalProps] = React.useState({
     loggedIn: false,
     username: "",
   });
 
-  const [open, setOpen] = React.useState(false);
-  const [signedIn, setSignedIn] = React.useState(false);
-
   const handleClickOpen = () => {
-    setOpen(true);
+    setSignInDialogOpen(true);
   };
 
   const handleClose = (value: boolean) => {
-    setOpen(false);
+    setSignInDialogOpen(false);
   };
 
   const logIn = (
@@ -49,7 +50,6 @@ function App() {
     _username: string | undefined,
     password: string | undefined
   ) => {
-    console.log(accepted, _username);
     setGlobalProps({
       loggedIn: accepted,
       username: _username ? _username : "",
@@ -72,39 +72,36 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <p>logged user: {!globalProps.loggedIn? "No user" : globalProps.username}</p>
-
-        <Button variant="contained" onClick={() => setOpen(true)}>
+        {/* <Button variant="contained" onClick={() => setSignInDialogOpen(true)}>
           Sign In
         </Button>
-        <SignInDialog open={open} onClose={handleClose} submitForm={logIn} />
+        <SignInDialog
+          open={signInDialogOpen}
+          onClose={handleClose}
+          submitForm={logIn}
+        /> */}
 
-        <div className="side-nav" style={{ backgroundColor: "#ff00f0" }}>
-          <p>naviation menu</p>
-          <ul className="side-nav-list">
-            <li>
-              <Link to="">Home</Link>
-            </li>
-            <li>
-              <Link to="whatever">whatever</Link>
-            </li>
-          </ul>
-        </div>
+        <SearchAppBar />
 
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+        <div className="viewport">
 
-          <p>default content</p>
-          <IconButton onClick={colorMode.toggleColorMode} color="inherit">
-            {theme.palette.mode === "dark" ? (
-              <Brightness7Icon />
-            ) : (
-              <Brightness4Icon />
-            )}
-          </IconButton>
+          <SideNav />
+
+          <Box >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+
+            <p>default content</p>
+            <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+              {theme.palette.mode === "dark" ? (
+                <Brightness7Icon />
+              ) : (
+                <Brightness4Icon />
+              )}
+            </IconButton>
+          </Box>
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>

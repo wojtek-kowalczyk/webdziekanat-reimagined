@@ -38,3 +38,21 @@
 }
 
 /* CUSTOM STYLES */
+
+.viewport {
+  position: absolute;
+  bottom: 0;
+  top: 64px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 600px) {
+  .viewport {
+    position: absolute;
+    bottom: 0;
+    top: 56px;
+    display: flex;
+    flex-direction: row;
+  }
+}
