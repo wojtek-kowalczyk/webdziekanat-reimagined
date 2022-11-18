@@ -82,6 +82,7 @@ export interface ProfileSnippetProps {
   loggedIn: boolean;
   username: string;
   openSignInDialog: () => void;
+  logOutFunction: () => void;
 }
 
 const ProfileSnippet = (props: ProfileSnippetProps) => {
@@ -131,9 +132,9 @@ const ProfileSnippet = (props: ProfileSnippetProps) => {
                 <ListItemText primary="Settings" />
               </MenuItem>
               <MenuItem
-                onClick={() => {
-                  alert("TODO: Sign Out");
+                onClick={() => { 
                   handleClose();
+                  props.logOutFunction();
                 }}
                 component={Link}
                 to="/"
@@ -160,6 +161,7 @@ export default function CustomAppBar(
     loggedIn: boolean;
     openSignInDialog: () => void;
     username: string;
+    logOutFunction: () => void;
   }
 ) {
   return (
@@ -211,6 +213,7 @@ export default function CustomAppBar(
             username={props.username}
             loggedIn={props.loggedIn}
             openSignInDialog={props.openSignInDialog}
+            logOutFunction={props.logOutFunction}
           />
         </Toolbar>
       </AppBar>

@@ -57,6 +57,13 @@ function App() {
     });
   };
 
+  const logOut = () => {
+    setGlobalProps({
+      loggedIn: false,
+      username: "",
+    });
+  };
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -83,9 +90,10 @@ function App() {
           loggedIn={globalProps.loggedIn}
           openSignInDialog={handleClickOpen}
           username={globalProps.username}
+          logOutFunction={logOut}
         />
         <div className="viewport">
-          <SideNav />
+          <SideNav logOutFunction={logOut} loggedIn={globalProps.loggedIn}/>
           <Box>
             <Routes>
               <Route path="/" element={<Home />} />

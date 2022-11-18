@@ -19,7 +19,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 
-export default function SideNav() {
+export default function SideNav(props: {
+  logOutFunction: () => void;
+  loggedIn: boolean;
+}) {
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -85,17 +88,17 @@ export default function SideNav() {
         <ListItemText primary="Settings" />
       </ListItemButton>
 
-      <ListItemButton
+      {props.loggedIn && <ListItemButton
         component={Link}
         to="/"
-        onClick={() => alert("todo : logout")}
+        onClick={props.logOutFunction}
         sx={{ flex: 0 }}
       >
         <ListItemIcon>
           <LogoutIcon />
         </ListItemIcon>
         <ListItemText primary="LogOut" />
-      </ListItemButton>
+      </ListItemButton>}
 
       {/* --------------------- NESTED LIST --------------------- */}
       {/* 
