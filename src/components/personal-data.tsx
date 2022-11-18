@@ -6,10 +6,10 @@ function PersonalData(props: {
 }) {
     // const [personalEditMode, setPersonalEditMode] = useState()
     return (
-        <>
-            <Paper sx={{ margin: "25px", padding: "25px" }}>
-                <Typography variant="h4" sx={{ marginBottom: "8px" }}>Personal Data</Typography>
-                <div style={{ backgroundColor: "#aaa", width: "100%", height: "1px" }}></div>
+        <Box sx={{display: "flex", flexDirection: "row", flexWrap: "wrap"}}>
+            <Paper sx={{ margin: "25px", padding: "25px"}}>
+
+                <Typography variant="h5" sx={{ marginBottom: "-25px" }}>Personal Data</Typography>
                 <Box className="form" sx={{ display: "flex", marginY: "25px", gap: 3 }}>
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                         <TextField label="First Name" variant="standard" />
@@ -22,12 +22,8 @@ function PersonalData(props: {
                         <TextField label="Pesel" variant="standard" />
                     </Box>
                 </Box>
-                <Button variant="contained" sx={{ paddingX: "25px", paddingY: "6px" }}>Save</Button>
-            </Paper>
 
-            <Paper sx={{ margin: "25px", padding: "25px" }}>
-                <Typography variant="h4" sx={{ marginBottom: "8px" }}>Adress</Typography>
-                <div style={{ backgroundColor: "#aaa", width: "100%", height: "1px" }}></div>
+                <Typography variant="h5" sx={{ marginBottom: "-25px" }}>Adress</Typography>
                 <Box className="form" sx={{ display: "flex", marginY: "25px", gap: 3 }}>
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                         <TextField label="Street" variant="standard" />
@@ -40,12 +36,8 @@ function PersonalData(props: {
                         <TextField label="Postal Code" variant="standard" />
                     </Box>
                 </Box>
-                <Button variant="contained" sx={{ paddingX: "25px", paddingY: "6px" }}>Save</Button>
-            </Paper>
-            
-            <Paper sx={{ margin: "25px", padding: "25px" }}>
-                <Typography variant="h4" sx={{ marginBottom: "8px" }}>Contact</Typography>
-                <div style={{ backgroundColor: "#aaa", width: "100%", height: "1px" }}></div>
+
+                <Typography variant="h5" sx={{ marginBottom: "-25px" }}>Contact</Typography>
                 <Box className="form" sx={{ display: "flex", marginY: "25px", gap: 3 }}>
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                         <TextField label="Phone" variant="standard" />
@@ -56,7 +48,7 @@ function PersonalData(props: {
                 </Box>
                 <Button variant="contained" sx={{ paddingX: "25px", paddingY: "6px" }}>Save</Button>
             </Paper>
-        </>
+        </Box>
     )
 }
 
