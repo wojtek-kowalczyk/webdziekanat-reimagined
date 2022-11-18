@@ -1,13 +1,17 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useTheme } from '@mui/material/styles';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
 function PersonalData(props: {
 
 }) {
-    // const [personalEditMode, setPersonalEditMode] = useState()
+    const [editMode, setEditMode] = useState(false);
+    const theme = useTheme();
+
     return (
-        <Box sx={{display: "flex", flexDirection: "row", flexWrap: "wrap"}}>
-            <Paper sx={{ margin: "25px", padding: "25px"}}>
+        <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+            <Paper sx={{ margin: "25px", padding: "25px", backgroundColor: editMode? theme.palette.warning.main : "unset" }}>
 
                 <Typography variant="h5" sx={{ marginBottom: "-25px" }}>Personal Data</Typography>
                 <Box className="form" sx={{ display: "flex", marginY: "25px", gap: 3 }}>
@@ -46,7 +50,30 @@ function PersonalData(props: {
                         <TextField label="Email" variant="standard" />
                     </Box>
                 </Box>
-                <Button variant="contained" sx={{ paddingX: "25px", paddingY: "6px" }}>Save</Button>
+                <Box className="button-container" sx={{display: "flex", flexDdirection: "row", alignItems: "center"}}>
+                {!editMode ?
+                    <Button
+                        onClick={() => setEditMode(!editMode)}
+                        variant="contained"
+                        color="secondary"
+                        sx={{ paddingX: "25px", paddingY: "6px" }}>
+                        Edit
+                    </Button>
+                    :
+                    <Button
+                        onClick={() => setEditMode(!editMode)}
+                        variant="contained"
+                        color="primary"
+                        sx={{ paddingX: "25px", paddingY: "6px" }}>
+                        Save
+                    </Button>
+                }
+                {editMode && 
+                    <Box sx={{marginLeft: "16px", display: "flex", flexDirection: "row"}}>
+                        <PriorityHighIcon />
+                        <Typography>You are editing your personal data</Typography>
+                    </Box> }
+                </Box>
             </Paper>
         </Box>
     )

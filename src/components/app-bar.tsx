@@ -166,7 +166,7 @@ export default function CustomAppBar(
 ) {
   return (
     <Box sx={{ flexGrow: 1, zIndex: 10, position: "relative" }}>
-      <AppBar enableColorOnDark position="static">
+      <AppBar enableColorOnDark>
         <Toolbar>
           <IconButton
             size="large"

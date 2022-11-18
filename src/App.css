@@ -45,14 +45,15 @@
   top: 64px;
   display: flex;
   flex-direction: row;
+  height: fit-content;
 }
 
 @media screen and (max-width: 600px) {
   .viewport {
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
     top: 56px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row; */
   }
 }

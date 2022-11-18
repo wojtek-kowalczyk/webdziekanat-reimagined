@@ -30,78 +30,81 @@ export default function SideNav(props: {
   };
 
   return (
-    <List
-      sx={{
-        width: "20%",
-        maxWidth: 300,
-        minWidth: 225,
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "background.paper",
-        fontFamily: "Titillium Web, sans-serif",
-      }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-    >
-      <ListItemButton component={Link} to="/" sx={{ flex: 0 }}>
-        <ListItemIcon>
-          <HomeIcon />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItemButton>
-
-      <ListItemButton component={Link} to="/schedule" sx={{ flex: 0 }}>
-        <ListItemIcon>
-          <CalendarMonthIcon />
-        </ListItemIcon>
-        <ListItemText primary="Course Shedule" />
-      </ListItemButton>
-
-      <ListItemButton component={Link} to="/reportcard" sx={{ flex: 0 }}>
-        <ListItemIcon>
-          <LibraryBooksIcon />
-        </ListItemIcon>
-        <ListItemText primary="Report Card" />
-      </ListItemButton>
-
-      <ListItemButton component={Link} to="/personal" sx={{ flex: 0 }}>
-        <ListItemIcon>
-          <PersonIcon />
-        </ListItemIcon>
-        <ListItemText primary="Personal Info" />
-      </ListItemButton>
-
-      <ListItemButton component={Link} to="/administration" sx={{ flex: 0 }}>
-        <ListItemIcon>
-          <HomeWorkIcon />
-        </ListItemIcon>
-        <ListItemText primary="Administration" />
-      </ListItemButton>
-
-      {/* Expander */}
-      <Box sx={{ flex: "1" }} />
-
-      <ListItemButton component={Link} to="/settings" sx={{ flex: 0 }}>
-        <ListItemIcon>
-          <SettingsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Settings" />
-      </ListItemButton>
-
-      {props.loggedIn && <ListItemButton
-        component={Link}
-        to="/"
-        onClick={props.logOutFunction}
-        sx={{ flex: 0 }}
+      <List
+        sx={{
+          maxHeight: "calc(100vh - 64px)",
+          position: "sticky",
+          top: "64px",
+          width: "20%",
+          maxWidth: 300,
+          minWidth: 225,
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "background.paper",
+          fontFamily: "Titillium Web, sans-serif",
+        }}
+        component="nav"
+        aria-labelledby="nested-list-subheader"
       >
-        <ListItemIcon>
-          <LogoutIcon />
-        </ListItemIcon>
-        <ListItemText primary="LogOut" />
-      </ListItemButton>}
+        <ListItemButton component={Link} to="/" sx={{ flex: 0 }}>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItemButton>
 
-      {/* --------------------- NESTED LIST --------------------- */}
-      {/* 
+        <ListItemButton component={Link} to="/schedule" sx={{ flex: 0 }}>
+          <ListItemIcon>
+            <CalendarMonthIcon />
+          </ListItemIcon>
+          <ListItemText primary="Course Shedule" />
+        </ListItemButton>
+
+        <ListItemButton component={Link} to="/reportcard" sx={{ flex: 0 }}>
+          <ListItemIcon>
+            <LibraryBooksIcon />
+          </ListItemIcon>
+          <ListItemText primary="Report Card" />
+        </ListItemButton>
+
+        <ListItemButton component={Link} to="/personal" sx={{ flex: 0 }}>
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText primary="Personal Info" />
+        </ListItemButton>
+
+        <ListItemButton component={Link} to="/administration" sx={{ flex: 0 }}>
+          <ListItemIcon>
+            <HomeWorkIcon />
+          </ListItemIcon>
+          <ListItemText primary="Administration" />
+        </ListItemButton>
+
+        {/* Expander */}
+        <Box sx={{ flex: "1" }} />
+
+        <ListItemButton component={Link} to="/settings" sx={{ flex: 0 }}>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItemButton>
+
+        {props.loggedIn && <ListItemButton
+          component={Link}
+          to="/"
+          onClick={props.logOutFunction}
+          sx={{ flex: 0 }}
+        >
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText primary="LogOut" />
+        </ListItemButton>}
+
+        {/* --------------------- NESTED LIST --------------------- */}
+        {/* 
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
           <HomeIcon />
@@ -128,6 +131,6 @@ export default function SideNav(props: {
         </List>
       </Collapse>
        */}
-    </List>
+      </List>
   );
 }

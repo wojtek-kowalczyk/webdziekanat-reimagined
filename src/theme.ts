@@ -32,6 +32,9 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         link: {
           main: "#ff00ff"
         },
+        warning: {
+          main: "#FFCC00"
+        }
       }
       : {
         // palette values for dark mode
@@ -52,6 +55,9 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         link: {
           main: "#ff00ff"
         },
+        warning: {
+          main: "#c29b00"
+        }
       }),
   },
   typography: {
