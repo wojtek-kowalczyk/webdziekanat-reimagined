@@ -22,6 +22,7 @@ import SignInDialog from "./components/signin-dialog";
 import CustomAppBar from "./components/app-bar";
 import SideNav from "./components/nav-bar";
 import CourseSchedule from "./components/course-schedule";
+import PersonalData from "./components/personal-data";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -99,6 +100,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/schedule" element={<CourseSchedule/>} />
+              <Route path="/personal" element={<PersonalData/>} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Box>
