@@ -33,7 +33,8 @@ export default function SideNav(props: {
       <List
         sx={{
           maxHeight: "calc(100vh - 64px)",
-          position: "sticky",
+          position: "fixed",
+          height: "calc(100vh - 64px)",
           top: "64px",
           width: "20%",
           maxWidth: 300,

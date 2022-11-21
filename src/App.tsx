@@ -96,7 +96,9 @@ function App() {
         />
         <div className="viewport">
           <SideNav logOutFunction={logOut} loggedIn={globalProps.loggedIn}/>
-          <Box>
+          <Box sx={{
+            marginLeft: "clamp(20%, 225px, 300px)"
+          }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/schedule" element={<CourseSchedule/>} />

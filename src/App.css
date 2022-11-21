@@ -45,7 +45,7 @@
   top: 64px;
   display: flex;
   flex-direction: row;
-  height: fit-content;
+  /* height: fit-content; */
 }
 
 @media screen and (max-width: 600px) {
