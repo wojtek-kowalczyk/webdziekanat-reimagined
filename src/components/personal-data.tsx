@@ -8,10 +8,10 @@ function PersonalData(props: {
 }) {
     const [editMode, setEditMode] = useState(false);
     const theme = useTheme();
-
+    
     return (
         <Box sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-            <Paper sx={{ margin: "25px", padding: "25px", backgroundColor: editMode? theme.palette.warning.main : "unset" }}>
+            <Paper sx={{ margin: "25px", padding: "25px", ...(editMode && {backgroundColor: theme.palette.warning.main}) }}>
 
                 <Typography variant="h5" sx={{ marginBottom: "-25px" }}>Personal Data</Typography>
                 <Box className="form" sx={{ display: "flex", marginY: "25px", gap: 3 }}>
