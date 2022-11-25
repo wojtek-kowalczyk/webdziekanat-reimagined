@@ -18,6 +18,8 @@ import Menu from "@mui/material/Menu";
 import { ListItemIcon, ListItemText } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Badge from '@mui/material/Badge';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -101,7 +103,7 @@ const ProfileSnippet = (props: ProfileSnippetProps) => {
       sx={{
         display: "flex",
         flexDirection: "row",
-        ml: 4,
+        ml: "15px",
         alignItems: "center",
       }}
     >
@@ -132,7 +134,7 @@ const ProfileSnippet = (props: ProfileSnippetProps) => {
                 <ListItemText primary="Settings" />
               </MenuItem>
               <MenuItem
-                onClick={() => { 
+                onClick={() => {
                   handleClose();
                   props.logOutFunction();
                 }}
@@ -208,6 +210,13 @@ export default function CustomAppBar(
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+
+          {props.loggedIn &&
+            <Box sx ={{ml: "15px"}}>
+              <Badge badgeContent={3} color="secondary">
+                <NotificationsIcon/>
+              </Badge>
+            </Box>}
 
           <ProfileSnippet
             username={props.username}
