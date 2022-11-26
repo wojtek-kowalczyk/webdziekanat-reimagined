@@ -25,6 +25,7 @@ import CourseSchedule from "./components/course-schedule";
 import PersonalData from "./components/personal-data";
 import ReportCard from "./components/report-card";
 import SettingsPanel from "./components/settings";
+import Administration from "./components/adnimistration";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -107,6 +108,7 @@ function App() {
               <Route path="/personal" element={<PersonalData/>} />
               <Route path="/reportcard" element={<ReportCard/>} />
               <Route path="/settings" element={<SettingsPanel/>} />
+              <Route path="/administration" element={<Administration/>} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Box>
