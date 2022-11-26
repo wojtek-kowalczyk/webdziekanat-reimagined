@@ -132,8 +132,8 @@ function Home(params: any) {
             }
             sx={{
               backgroundColor: clicked[1]
-                ? theme.palette.secondary.light
-                : theme.palette.common.white,
+                ? (theme.palette.mode === 'dark'? theme.palette.secondary.dark : theme.palette.secondary.light)
+                : (theme.palette.background.paper)
             }}
           />
           <Chip
@@ -144,9 +144,8 @@ function Home(params: any) {
             }
             sx={{
               backgroundColor: clicked[2]
-                ? theme.palette.secondary.light
-                : theme.palette.common.white,
-            }}
+                ? (theme.palette.mode === 'dark'? theme.palette.secondary.dark : theme.palette.secondary.light)
+                : (theme.palette.background.paper)            }}
           />
           <Chip
             label="Mentions"
@@ -156,9 +155,8 @@ function Home(params: any) {
             }
             sx={{
               backgroundColor: clicked[3]
-                ? theme.palette.secondary.light
-                : theme.palette.common.white,
-            }}
+                ? (theme.palette.mode === 'dark'? theme.palette.secondary.dark : theme.palette.secondary.light)
+                : (theme.palette.background.paper)            }}
           />
         </Stack>
 

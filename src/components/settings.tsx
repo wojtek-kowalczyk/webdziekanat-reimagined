@@ -25,7 +25,7 @@ export default function SettingsPanel() {
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                    <Typography sx={{ width: '70%', flexShrink: 0 }}>
                         General settings
                     </Typography>
                 </AccordionSummary>
@@ -44,7 +44,7 @@ export default function SettingsPanel() {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Account Settings</Typography>
+                    <Typography sx={{ width: '70%', flexShrink: 0 }}>Account Settings</Typography>
                 </AccordionSummary>
                 <AccordionDetails sx={{display: 'flex', flexDirection: "column", gap: 3}}>
                     <Typography variant='h5'>Change Password</Typography>
